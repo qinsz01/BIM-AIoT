@@ -53,8 +53,6 @@
 </template>
 
 <script>
-  debugger
-  import * as Vue from 'vue'
   import './example-common.css'
   import './btn.less'
   import './energy.less'
