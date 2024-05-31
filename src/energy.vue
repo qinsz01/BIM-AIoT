@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <header>
+    <!-- <header>
       <a href="#" class="logo"></a>
       <h2>基于BIM+物联网的能耗监控平台<i>官方示例</i></h2>
       <div class="btn-box">
         <a href="https://github.com/bimface/example-energy" target="_blank" class="btn btn-sm btn-primary">源代码</a>
       </div>
-    </header>
+    </header> -->
 
     <div class="container" :style="{'height':cHeight + 'px'}">
       <div id="view3d"></div>
@@ -42,13 +42,13 @@
 
     </div>
 
-    <footer>
+    <!-- <footer>
       <div class="w1200">
         <div class="copyright">
           Copyright ©2016-2020 <a href="//bimface.com" target="_blank">BIMFACE</a> 京ICP备10021606号-19 <a href="http://www.glodon.com/" target="_blank">广联达</a>旗下产品
         </div>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
