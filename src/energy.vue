@@ -6,10 +6,14 @@
       <div class="btn-box">
         <a href="https://github.com/bimface/example-energy" target="_blank" class="btn btn-sm btn-primary">源代码</a>
       </div>
-    </header> -->
-
+</header> -->
+     
     <div class="container" :style="{'height':cHeight + 'px'}">
-      <div id="view3d"></div>
+         <div class="left-panels">
+<iframe v-for="url in iframeUrls" :key="url" :src="url" class="dashboard-iframe" width="310px" height="150px"></iframe>
+        </div>
+    <div id="view3d">
+        </div>
       <div class="side" v-show="loaded">
         <ul class="list" :style="{'height':(cHeight - 384) + 'px'}">
           <li v-for="(item,i) in tagArray" :class="{'cur':item.isCheck}" @click="showBoard(i)">{{item.name}}</li>
@@ -41,14 +45,14 @@
       </div>
 
     </div>
-
-    <!-- <footer>
+<!--
+    <footer>
       <div class="w1200">
         <div class="copyright">
           Copyright ©2016-2020 <a href="//bimface.com" target="_blank">BIMFACE</a> 京ICP备10021606号-19 <a href="http://www.glodon.com/" target="_blank">广联达</a>旗下产品
         </div>
       </div>
-    </footer> -->
+</footer> -->
   </div>
 </template>
 
@@ -61,6 +65,13 @@
   export default {
     data(){
       return {
+        iframeUrls: [
+"http://localhost:3000/d-solo/LevZOa-Sk/iot-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&kiosk=tv&panelId=10",
+"http://localhost:3000/d-solo/LevZOa-Sk/iot-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&kiosk=tv&panelId=2",
+"http://localhost:3000/d-solo/LevZOa-Sk/iot-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&kiosk=tv&panelId=4",
+"http://localhost:3000/d-solo/LevZOa-Sk/iot-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&kiosk=tv&panelId=12",
+"http://localhost:3000/d-solo/LevZOa-Sk/iot-dashboard?orgId=1&from=now-5m&to=now&refresh=5s&kiosk=tv&panelId=6"
+        ],
         cHeight:null,
         info:null,
         switchBtn:false,

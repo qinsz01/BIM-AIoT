@@ -102,10 +102,10 @@
 
 #view3d {
   position: absolute;
-  top:0;
-  left:0;
-  right:240px;
-  bottom:0px;
+  top: 0;
+  left: 300px;
+  right: 240px;
+  bottom: 0;
 }
 
 .energy-charts {
@@ -138,4 +138,47 @@
   100% {
     transform: scale(1);
   }
+}
+
+.dashboard-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.left-panels {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-iframe {
+  border: none;
+  margin-bottom: 10px;
+}
+
+.center-building {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.center-building img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.floating-iframe {
+  position: absolute;
+  top: 10px; /* 调整为所需 */
+  right: 10px; /* 调整为所需 */
+  width: 400px; /* 调整为所需 */
+  height: 250px; /* 调整为所需 */
+  border: none;
+  z-index: 100;
+}
+
+.right-panel {
+  width: 20%; /* 调整为所需 */
+  height: 100vh; /* 调整为所需 */
+  /* 在这里添加你的样式 */
 }
