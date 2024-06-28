@@ -18,13 +18,13 @@ const room_dict = {
     "pm25": {
         "name": "PM2.5",
         "unit": "ug/m3",
-        "max": 100,
+        "max": 200,
         "min": 0
     },
     "t": {
         "name": "温度",
         "unit": "℃",
-        "max": 100,
+        "max": 50,
         "min": 0
     },
     "h": {
@@ -36,16 +36,15 @@ const room_dict = {
     "light": {
         "name": "光照",
         "unit": "lux",
-        "max": 100,
+        "max": 300,
         "min": 0
     }
 }
 
 
 function initChart() {
-    const chart = echarts.init(gaugeChart.value);
-    // const props_refs=toRefs(props);
-    // console.log(props_refs);
+    const chart = echarts.getInstanceByDom(gaugeChart.value) || echarts.init(gaugeChart.value);
+    
     const option = {
         series: [
             {
