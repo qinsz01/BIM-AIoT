@@ -1,96 +1,90 @@
 .container {
+  display: flex;
+  flex-direction: row;
   position: relative;
-  margin:20px;
+  margin: 10px;
   box-shadow: 0 0 5px 0 #eee;
   background-color: #fff;
-  .side {
-    position: absolute;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    width: 240px;
-    background-color: #f4f4f4;
-    border-left:1px solid #ccc;
-    box-sizing: border-box;
-    .list {
-      padding:10px;
-      border-bottom:1px solid #ccc;
-      overflow: hidden;
-      li {
-        padding:5px 10px;
-        cursor: pointer;
-        &.cur {
-          background-color: #c6efe8;
-          color:#1bcbad;
-        }
-      }
+}
+
+.list {
+  position: absolute;
+  margin:10px;
+  width: 240px;
+  background-color: #f4f4f4;
+  z-index: 10;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  right: 10px;
+  bottom: 15px;
+  border-left: 1px solid #ccc;
+
+  li {
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &.cur {
+      background-color: #c6efe8;
+      color: #1bcbad;
     }
-    .info {
-      width:218px;
-      height: 138px;
-      border:1px solid #ccc;
-      background: url(../img/exmaple-energy-info.svg) no-repeat;
-      margin: 10px 0 10px 9px;
-      &.off {
-        li {
-          color:#ccc;
-        }
-      }
-      li {
-        float: left;
-        width: 72px;
-        height: 69px;
-        text-align: center;
-        padding-top: 18px;
-        box-sizing: border-box;
-        font-size: 22px;
-        color:#16ae11;
-        .yellow {
-          color:#ff8023;
-        }
-        .red {
-          color:#ff2323;
-        }
-      }
+  }
+}
+
+.title {
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.btn-box {
+  position: absolute;
+  overflow: hidden;
+  margin: 0 10px 10px;
+  z-index: 20;
+  bottom: 10px;
+  left:160px;
+  background-color: #c6efe8;
+  padding: 10px;
+  border-radius: 10px;
+
+  span {
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #979797;
+    height: 30px;
+    border-radius: 4px;
+    width: 64px;
+    cursor: pointer;
+
+    &:last-child {
+      width: 65px;
+      margin-right: 0;
     }
-    .btn-box {
-      overflow: hidden;
-      margin: 0 10px 10px;
-      span {
-        float: left;
-        margin-right:10px;
-        border:1px solid #979797;
-        height:30px;
-        border-radius: 4px;
-        width:64px;
-        cursor: pointer;
-        &:last-child {
-          width:65px;
-          margin-right:0;
-        }
-        &:hover {
-          background-color: #e7e7e7;
-        }
-        &.switch {
-          background-image: url(../img/on-off.png);
-          background-repeat: no-repeat;
-          background-position: center center;
-        }
-        &.down {
-          background-image: url(../img/arrow-down.png);
-          background-repeat: no-repeat;
-          background-position: center center;
-        }
-        &.up {
-          background-image: url(../img/arrow-up.png);
-          background-repeat: no-repeat;
-          background-position: center center;
-        }
-      }
+
+    &:hover {
+      background-color: #4a99ab;
     }
-    .energy {
-      border-top:1px solid #ccc;
-      padding:10px;
+
+    &.switch {
+      background-image: url(../img/on-off.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.down {
+      background-image: url(../img/arrow-down.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.up {
+      background-image: url(../img/arrow-up.png);
+      background-repeat: no-repeat;
+      background-position: center center;
     }
   }
 }
@@ -101,25 +95,22 @@
 
 
 #view3d {
-  position: absolute;
+  position: relative;
   top: 0;
-  left: 300px;
-  right: 240px;
+  flex-grow: 1;
+  // left: 300px;
+  // right: 240px;
+  // width: 80%;
   bottom: 0;
 }
 
-.energy-charts {
-  width:220px;
-  height: 100px;
-  margin: 10px 0;
-  background-color: #000;
-}
+
 
 .bln {
   width: 20px;
   height: 20px;
   border: 4px solid rgba(255, 140, 0, 1);
-  border-radius:100%;
+  border-radius: 100%;
   background-color: rgba(255, 140, 0, 0.3);
   cursor: pointer;
   -webkit-animation-timing-function: ease-in-out;
@@ -128,13 +119,16 @@
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
 }
+
 @-webkit-keyframes breathe {
   0% {
     transform: scale(0.2);
   }
+
   80% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1);
   }
@@ -146,8 +140,14 @@
 }
 
 .left-panels {
+  position: absolute;
+  bottom: 0;
+  left: 1%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 150px;
+  z-index: 10;
 }
 
 .dashboard-iframe {
@@ -167,18 +167,7 @@
   display: block;
 }
 
-.floating-iframe {
-  position: absolute;
-  top: 10px; /* 调整为所需 */
-  right: 10px; /* 调整为所需 */
-  width: 400px; /* 调整为所需 */
-  height: 250px; /* 调整为所需 */
-  border: none;
-  z-index: 100;
-}
 
-.right-panel {
-  width: 20%; /* 调整为所需 */
-  height: 100vh; /* 调整为所需 */
-  /* 在这里添加你的样式 */
+.gaugechart {
+  width: 100%;
 }
