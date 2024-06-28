@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="projectTitle">XXX项目AIOT智能低碳运维系统</div>
     <div class="container" :style="{ 'height': cHeight + 'px' }">
       <div id="view3d">
         <div class="left-panels">
@@ -161,7 +162,7 @@ export default {
   mounted() {
     var me = this;
 
-    me.cHeight = document.documentElement.clientHeight;
+    me.cHeight = document.documentElement.clientHeight-80;
 
     axios.get('/api/api/console/share/preview/viewtoken?token=4b042b5d').then((res) => {
       if (res.data.code == 'success') {

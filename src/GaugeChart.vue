@@ -79,6 +79,8 @@ function initChart() {
                 axisLine: {
                     lineStyle: {
                         width: 18,
+                        shadowBlur: 3,
+                        shadowColor: '#000000',
                         // color: "#fff",
                         color: [
                             [1, new echarts.graphic.LinearGradient(0, 0, 1, 1, [
@@ -95,7 +97,7 @@ function initChart() {
                     },
                 },
                 axisTick: {
-                    show: false,
+                    show: false
                 },
                 splitLine: {
                     show: false,
@@ -110,12 +112,14 @@ function initChart() {
                 title: {
                     show: true,
                     fontSize: 15,
+                    fontWeight: 'bold',
                     color: '#8983bf',
-                    offsetCenter: [0, '-130%'],
+                    offsetCenter: [0, '-140%'],
                 },
                 detail: {
                     valueAnimation: false,
                     fontSize: 15,
+                    fontWeight: 'bold',
                     offsetCenter: [0, '80%'],
                     color: '#8983bf',
                 },
