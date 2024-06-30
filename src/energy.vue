@@ -4855,7 +4855,7 @@ export default {
 
     me.cHeight = document.documentElement.clientHeight - 80;
 
-    axios.get('/api/api/console/share/preview/viewtoken?token=4b042b5d').then((res) => {
+    axios.get('https://bimface.com/api/console/share/preview/viewtoken?token=4b042b5d').then((res) => {
       if (res.data.code == 'success') {
         me.loaded = true;
         var viewToken = res.data.data;
