@@ -92,7 +92,7 @@
         {
           if (data.elementId != "10007"){
             console.log(data);
-            window.location.href = "/building";
+            window.location.href = "./building.html";
           }
         });
       },
