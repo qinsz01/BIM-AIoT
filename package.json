@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tresjs/cientos": "^3.9.0",
+    "@tresjs/core": "^4.0.2",
     "axios": "^1.6.8",
     "babel-polyfill": "^6.26.0",
     "echarts": "^5.5.1",
     "es6-promise": "^4.2.8",
+    "three": "^0.166.1",
+    "three-custom-shader-material": "^5.4.0",
+    "tweakpane": "^4.0.4",
     "vue": "^3.4.21",
     "xlsx": "^0.18.5"
   },
