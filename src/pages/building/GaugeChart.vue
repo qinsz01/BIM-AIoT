@@ -8,6 +8,8 @@ import { watch, toRef, defineProps, onMounted } from 'vue';
 
 const gaugeChart = toRef(null);
 
+
+
 const room_dict = {
     "co": {
         "name": "CO2",
@@ -63,13 +65,13 @@ function initChart() {
                             x2: 0,
                             y2: 1,
                             colorStops: [
-                                {
-                                    offset: 0,
-                                    color: "#14517C"
-                                },
+                                // {
+                                //     offset: 0,
+                                //     color: "#14517C"
+                                // },
                                 {
                                     offset: 1,
-                                    color: "#2e1256"
+                                    color: "#c6efe8"
                                 }
                             ],
                         },
@@ -85,12 +87,12 @@ function initChart() {
                             [1, new echarts.graphic.LinearGradient(0, 0, 1, 1, [
                                 {
                                     offset: 0,
-                                    color: "#c6efe8"
+                                    color: "#14517C"
                                 },
-                                // {
-                                //     offset: 1,
-                                //     color: "#2f7fc1"
-                                // }
+                                {
+                                    offset: 1,
+                                    color: "#2e1256"
+                                }
                             ], false)]
                         ]
                     },

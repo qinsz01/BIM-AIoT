@@ -16,6 +16,15 @@
           <span class="up" @click="btnUp"></span>
           <span class="down" @click="btnDown"></span>
         </div>
+        <div class="top-panels">
+          <div class="linechart" v-for="(item, key) in infoBox">
+            <LineChart :typeName="key" :typeValue="item" />
+          </div>
+        </div>
+        <div class="energy-box">
+          实时耗电量
+          <div id="energy" class="energy-charts" data-highcharts-chart="0"></div>
+        </div>
         <ul class="list" :style="{ 'height': (cHeight - 384) + 'px' }">
           <p class="title">传感器测点</p>
           <li v-for="(item, i) in tagArray" :class="{ 'cur': item.isCheck }" @click="showBoard(i)">{{ item.name }}</li>
@@ -31,6 +40,7 @@ import './btn.less'
 import './energy.less'
 import axios from 'axios'
 import GaugeChart from './GaugeChart.vue'
+import LineChart from './LineChart.vue'
 
 const data = {
   1: {
@@ -4719,7 +4729,8 @@ var index = [0, 0, 0, 0, 0];
 
 export default {
   components: {
-    GaugeChart
+    GaugeChart,
+    LineChart
   },
   data() {
     return {
@@ -4868,6 +4879,7 @@ export default {
           // 获取DOM元素
           var dom4Show = document.getElementById('view3d');
           var webAppConfig = new Glodon.Bimface.Application.WebApplication3DConfig();
+          webAppConfig.Toolbars = ["MainToolbar", "ModelTree"]
           webAppConfig.domElement = dom4Show;
 
           // 创建WebApplication
@@ -4876,13 +4888,19 @@ export default {
           // 添加待显示的模型
           app.addView(viewToken);
 
+
+
           // 监听添加view完成的事件
           app.addEventListener(Glodon.Bimface.Application.WebApplication3DEvent.ViewAdded, function () {
 
+
+
             // 从WebApplication获取viewer3D对象
             window.viewer3D = app.getViewer();
-
+            me.initSkyBox();
             app.render();
+            // console.log(app.getToolbars());
+            // app.getToolbar("ModelTree").element.setPosition({ anchor: Glodon.Bimface.Tiles.UI.ControlAlignOption.Center });
 
 
             // 初始化DrawableContainer
@@ -4898,10 +4916,104 @@ export default {
           console.log(error);
         };
       }
-    })
+    });
+
+    window.chart = new Highcharts.Chart({
+      chart: {
+        renderTo: 'energy',
+        type: 'spline',
+        animation: Highcharts.svg, // don't animate in old IE
+        backgroundColor: '#333333',
+        events: {
+          load: function () {
+            // set up the updating of the chart each second
+            var series = this.series[0];
+            setInterval(function () {
+              var x = (new Date()).getTime(), // current time
+                y = Math.random();
+              series.addPoint([x, y], true, true);
+            }, 3000);
+          }
+        }
+      },
+      plotOptions: {
+        spline: {
+          lineWidth: 1.5,
+          fillOpacity: 0.1,
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: true,
+                radius: 2
+              }
+            }
+          },
+          shadow: false
+        }
+      },
+      colors: ['#68a526'],
+      credits: {
+        enabled: false
+      },
+      title: {
+        text: null
+      },
+      xAxis: {
+        gridLineColor: '#5d5d5d',
+        gridLineWidth: 1,
+        lineColor: '#5d5d5d',
+        labels: {
+          enabled: false
+        }
+      },
+      yAxis: {
+        title: {
+          text: null
+        },
+        min: 0,
+        gridLineColor: '#5d5d5d',
+        gridLineWidth: 1,
+        labels: {
+          enabled: false
+        }
+      },
+      tooltip: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      exporting: {
+        enabled: false
+      },
+      series: [{
+        name: '实时耗电量',
+        data: (function () {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
+
+          for (i = -10; i <= 0; i++) {
+            data.push({
+              x: time + i * 3000,
+              y: Math.random()
+            });
+          }
+          return data;
+        })()
+      }]
+    });
   },
 
   methods: {
+    initSkyBox() {
+      const skyBoxManagerConfig = new Glodon.Bimface.Plugins.SkyBox.SkyBoxManagerConfig();
+      skyBoxManagerConfig.viewer = window.viewer3D;
+      skyBoxManagerConfig.style = Glodon.Bimface.Plugins.SkyBox.SkyBoxStyle.DarkNight;
+      new Glodon.Bimface.Plugins.SkyBox.SkyBoxManager(skyBoxManagerConfig);
+    },
     showBoard: function (num) {
       viewer3D.setView(Glodon.Bimface.Viewer.ViewOption.Home);
       this.selectTag(num);
