@@ -1,0 +1,251 @@
+#app {
+  background-color: #474747;
+}
+.projectTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color:#fff;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #041020;
+  border-radius: 3px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 10px;
+  box-shadow: 0 0 5px 0 #eee;
+  background-color: #fff;
+}
+
+.list {
+  position: absolute;
+  margin:10px;
+  width: 240px;
+  color:#fff;
+  background-color: #040652;
+  z-index: 10;
+  padding: 10px;
+  border: 1px solid #f7f7f7;
+  overflow: hidden;
+  right: 10px;
+  bottom: 15px;
+  align-items: center;
+  justify-content: center;
+  
+
+  li {
+    padding: 5px 10px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    background-color: #6d78a4;
+    border-radius: 5px;
+
+    &.cur {
+      background-color: #c6efe8;
+      color: #1bcbad;
+    }
+  }
+}
+
+.title {
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.btn-box {
+  position: absolute;
+  overflow: hidden;
+  margin: 0 10px 10px;
+  z-index: 20;
+  bottom: 10px;
+  left:160px;
+  color:#fff;
+  background-color: #040652;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+
+  span {
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #fff;
+    height: 30px;
+    border-radius: 4px;
+    width: 64px;
+    cursor: pointer;
+
+    &:last-child {
+      width: 65px;
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: #c6efe8;
+    }
+
+    &.switch {
+      background-image: url(../img/on-off.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.down {
+      background-image: url(../img/arrow-down.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.up {
+      background-image: url(../img/arrow-up.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}
+
+.btn-sm {
+  height: 28px;
+}
+
+
+#view3d {
+  position: relative;
+  top: 0;
+  flex-grow: 1;
+  // left: 300px;
+  // right: 240px;
+  // width: 80%;
+  bottom: 0;
+}
+
+
+
+.bln {
+  width: 20px;
+  height: 20px;
+  border: 4px solid rgba(255, 140, 0, 1);
+  border-radius: 100%;
+  background-color: rgba(255, 140, 0, 0.3);
+  cursor: pointer;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: breathe;
+  -webkit-animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+}
+
+@-webkit-keyframes breathe {
+  0% {
+    transform: scale(0.2);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dashboard-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.left-panels {
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  z-index: 10;
+}
+
+.dashboard-iframe {
+  border: none;
+  margin-bottom: 10px;
+}
+
+.center-building {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.center-building img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.gaugechart {
+  width: 100%;
+}
+
+.top-panels {
+  position: absolute;
+  top: 0;
+  left: 50%;    
+	transform:translate(-53%);
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 150px;
+  z-index: 10;
+
+  .linechart{
+    color: #8983bf;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin: 10px;
+  }
+}
+
+.energy-box {
+  position: absolute;
+  margin:10px;
+  width: 240px;
+  color:#fff;
+  background-color: #040652;
+  z-index: 10;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  border: 1px solid #f7f7f7;
+  overflow: hidden;
+  right: 10px;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  color:#fff;
+}
+
+.energy-charts {
+  width:220px;
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #000;
+  align-items: center;
+  justify-content: center;
+}

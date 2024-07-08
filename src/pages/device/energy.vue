@@ -4869,7 +4869,7 @@ export default {
     axios.get('https://bimface.com/api/console/share/preview/viewtoken?token=4b042b5d').then((res) => {
       if (res.data.code == 'success') {
         me.loaded = true;
-        var viewToken = "468e42ae12f746ebbe3e9b081b260d10";
+        var viewToken = res.data.data;
 
         var options = new BimfaceSDKLoaderConfig();
         options.viewToken = viewToken;
@@ -4897,10 +4897,6 @@ export default {
 
             // 从WebApplication获取viewer3D对象
             window.viewer3D = app.getViewer();
-            window.viewer3D.addEventListener(Glodon.Bimface.Viewer.Viewer3DEvent.MouseDoubleClicked, function (event) {
-              window.location.href = "./device.html"
-            });
-
             me.initSkyBox();
             app.render();
             // console.log(app.getToolbars());

@@ -26,6 +26,7 @@ export default defineConfig({
   build:{
     rollupOptions:{
       input:{
+        device:path.resolve(__dirname,'./device.html'),
         building:path.resolve(__dirname,'./building.html'),
         city:path.resolve(__dirname,'./city.html'),
       }
